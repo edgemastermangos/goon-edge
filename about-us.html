@@ -1,0 +1,167 @@
+<!DOCTYPE html> <!-- Declares the document type and version of HTML -->
+<html lang="en"> <!-- Sets the language of the document to English -->
+<head>
+  <meta charset="UTF-8"> <!-- Sets character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+  <link rel="stylesheet" href="external.css"> <!-- External CSS file -->
+  <title>Document</title> <!-- Title shown in browser tab -->
+  <style>
+    /* Container for the about section */
+    .about-container {
+    background-color: #753c2b; /* Brown background */
+    padding: 30px; /* Space inside the container */
+    border-radius: 25px; /* Rounded corners */
+    max-width: 1000px; /* Maximum width */
+    margin: 40px auto; /* Centered with margin */
+    }
+
+    /* Title styling */
+    .about-title {
+    background-color: #2c3e44; /* Dark blue background */
+    color: #f3e9d2; /* Light text color */
+    padding: 15px; /* Space inside the title */
+    border-radius: 30px; /* Rounded corners */
+    text-align: center; /* Centered text */
+    font-size: 1.5rem; /* Larger font size */
+    margin-bottom: 30px; /* Space below the title */
+    }
+
+    /* Flex container for info boxes */
+    .about-content {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Space between items */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 20px; /* Space between boxes */
+    }
+
+    /* Individual info box styling */
+    .info-box {
+    background-color: #2c3e44; /* Dark blue background */
+    color: #f3e9d2; /* Light text color */
+    border-radius: 30px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    flex: 1 1 45%; /* Flexible width, min ~45% */
+    min-width: 250px; /* Minimum width for responsiveness */
+    text-align: center; /* Centered text */
+    }
+
+    /* Link styling inside info boxes */
+    .info-box a {
+    color: #f3e9d2; /* Light color for links */
+    text-decoration: underline; /* Underline links */
+    }
+
+    /* Transition effect for images */
+    #img-transition {
+    transition: width 0.5s, height 0.5s; /* Smoothly animate width and height */
+    }
+
+    /* Enlarge image on hover */
+    #img-transition:hover {
+    width: 450px; /* Enlarged width */
+    height: 450px; /* Enlarged height */
+    }
+  </style>
+</head>
+<body>
+  <!-- Background slideshow container -->
+  <div class="slideshow-bg">    
+  <!-- Navigation bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="flavours.html">Flavours</a>
+  </nav>
+  <!-- Main about section container -->
+  <div class="about-container">
+    <div class="about-title">About us</div> <!-- Section title -->
+    <div class="about-content">
+    <!-- Info box: Location with Google Maps -->
+    <div class="info-box">
+      <p>
+      where we are located<br />
+      <a href="https://maps.google.com/?q=2-31-1+Kitazawa,+Setagaya" target="_blank">
+        2-31-1 Kitazawa, Setagaya
+      </a>
+      <!-- Embedded Google Map -->
+      <iframe
+        height="450"
+        src="https://maps.google.com/maps?q=2-31-1+Kitazawa,+Setagaya&output=embed"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+      </p>
+    </div>
+    <!-- Info box: Business history with image -->
+    <div class="info-box">
+      <p>
+      This business has been burned down and has been rebuilt and still standing after 4 generations of the Kimura family
+      <!-- Image with transition effect -->
+      <img id="img-transition"
+        width="300"
+        height="300"
+        src="IMG_4656.jpeg" alt="Tamaiya">
+      </p>
+    </div>
+    <!-- Info box: Specialization with image -->
+    <div class="info-box">
+      <p>
+      We specialize in traditional Japanese sweets made from recipes passed down through the generations.
+      <!-- Image with transition effect -->
+      <img id="img-transition"
+        width="300"
+        height="300"
+        src="IMG_4679.jpeg" alt="Tamaiya">
+      </p>
+    </div>
+    <!-- Info box: Shop atmosphere with image -->
+    <div class="info-box">
+      <p>
+      Our shop welcomes locals and tourists alike with a warm atmosphere and freshly made treats daily.
+      <!-- Image with transition effect -->
+      <img id="img-transition"
+        width="300"
+        height="300"
+        src="IMG_4654.jpeg" alt="Tamaiya">
+      </p>
+    </div>
+    </div>
+  </div>
+
+  <!-- Footer section with copyright and social links -->
+  <footer>
+    <p>© 2025 Tamaiya. All rights reserved.</p>
+    <p>
+    Contact us at:
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </footer>
+  </div>
+  <!-- JavaScript for background image slideshow -->
+  <script>
+  // Array of background image paths
+  const images = [
+    "images/bg1.jpg",
+    "images/bg2.jpg",
+    "images/bg3.jpg",
+    "images/bg4.jpg"
+  ];
+
+  let index = 0; // Current image index
+  const bgDiv = document.querySelector(".slideshow-bg"); // Get the slideshow background div
+
+  // Function to change the background image
+  function changeBackground() {
+    bgDiv.style.backgroundImage = `url('${images[index]}')`; // Set background image
+    index = (index + 1) % images.length; // Move to next image, loop back to start
+  }
+
+  changeBackground(); // Show the first image immediately
+  setInterval(changeBackground, 5000); // Change image every 5 seconds
+  </script>
+</body>
+</html>

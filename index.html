@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Sets the character encoding for the document -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
+  <link rel="stylesheet" href="external.css"> <!-- Links to an external CSS file -->
+  <title>Document</title> <!-- Sets the title of the page shown in the browser tab -->
+  <style>
+    /* Main container for the three columns */
+    .main {
+      display: flex; /* Uses flexbox for layout */
+      justify-content: center; /* Centers columns horizontally */
+      align-items: flex-start; /* Aligns columns to the top */
+      gap: 40px; /* Space between columns */
+      padding: 40px; /* Padding around the main container */
+      color: #f3e9d2; /* Text color */
+    }
+
+    /* Styles for each column */
+    .column {
+      background-color: #7A3B2E; /* Background color for columns */
+      padding: 20px; /* Padding inside each column */
+      border-radius: 25px; /* Rounded corners */
+      width: 250px; /* Fixed width for columns */
+      text-align: center; /* Center-aligns text */
+      color: #f3e9d2; /* Text color */
+    }
+
+    /* Styles for images inside columns */
+    .column img {
+      max-width: 100%; /* Makes images responsive */
+      border-radius: 25px; /* Rounded corners for images */
+      color: #f3e9d2; /* (Not needed for images, but harmless) */
+    }
+
+    /* Styles for button-like divs and paragraphs */
+    .button {
+      background-color: #2b3a42; /* Button background color */
+      padding: 15px 20px; /* Padding inside buttons */
+      border-radius: 50px; /* Fully rounded buttons */
+      text-align: center; /* Center-aligns button text */
+      margin: 10px 0; /* Vertical spacing between buttons */
+      color: #f3e9d2; /* Button text color */
+    }
+  </style>
+</head>
+<body>
+  <!-- Main background container for slideshow effect -->
+  <div class="slideshow-bg">
+    <header>
+      <h1></h1> <!-- Empty header, can be filled with a title -->
+      <!-- Navigation bar with links to other pages -->
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="flavours.html">Flavours</a>
+      </nav>
+    </header>
+
+    <!-- Main content area with three columns -->
+    <div class="main">
+      <!-- Left Column: Information about the shop -->
+      <div class="column">
+        <div class="button">What are we?</div>
+        <div class="button">We are a rice cracker shop</div>
+        <div class="button">We are located in Tokyo Shimokitazawa</div>
+        <div class="button">Our company is over 100 years old</div>
+      </div>
+
+      <!-- Center Column: Logo image -->
+      <div class="column">
+        <img src="image.png" alt="Tamaiya logo"> <!-- Shop logo -->
+      </div>
+
+      <!-- Right Column: Owner information -->
+      <div class="column">
+        <div class="button">Owner</div>
+        <img src="IMG_4656.jpeg" alt="Owner"> <!-- Owner's photo -->
+        <p class="button"> owner Name</p>
+        <p class="button"> Kimura</p>
+        <p class="button">Kimura is the 4th generation owner of Tamaiya</p>
+      </div>
+    </div> 
+
+    <!-- Footer section with copyright and social links -->
+    <footer>
+      <p>© 2025 Tamaiya. All rights reserved.</p>
+      <p>
+        Contact us at:
+        <!-- Social media links open in new tabs and are safe from opener exploits -->
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Array of background image paths for the slideshow
+    const images = [
+      "images/bg1.jpg",
+      "images/bg2.jpg",
+      "images/bg3.jpg",
+      "images/bg4.jpg",
+    ];
+
+    let index = 0; // Current image index
+    const bgDiv = document.querySelector(".slideshow-bg"); // Selects the slideshow background div
+
+    // Function to change the background image
+    function changeBackground() {
+      bgDiv.style.backgroundImage = `url('${images[index]}')`; // Sets background image
+      index = (index + 1) % images.length; // Moves to next image, loops back to start
+    }
+
+    changeBackground(); // Show the first image immediately
+    setInterval(changeBackground, 5000); // Change background every 5 seconds
+  </script>
+</body>
+</html>

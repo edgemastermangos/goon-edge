@@ -1,0 +1,292 @@
+<!DOCTYPE html> <!-- Declares the document type and version of HTML -->
+<html lang="en"> <!-- Sets the language of the document to English -->
+<head>
+  <meta charset="UTF-8" /> <!-- Sets character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive design for mobile devices -->
+  <title>Contact Us - Tamaiya</title> <!-- Page title shown in browser tab -->
+  <link rel="stylesheet" href="external.css" /> <!-- External CSS file link -->
+  <style>
+    /* Reset box-sizing for all elements */
+    * {
+      box-sizing: border-box;
+    }
+    /* Remove default margin/padding and set height for body and html */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%; 
+    }
+
+    /* Fullscreen background slideshow container */
+    .slideshow-bg {
+      position: fixed; /* Stays fixed behind all content */
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover; /* Cover entire area */
+      background-position: center; /* Center image */
+      background-repeat: no-repeat; /* No repeat */
+      transition: background-image 1s ease-in-out; /* Smooth transition */
+      z-index: -1; /* Behind all content */
+    }
+
+    /* Navigation bar fixed at the top */
+    nav {
+      position: fixed; /* Fixed at top */
+      top: 0; left: 0; right: 0;
+      background-color: #7A3B2E; /* Brown background */
+      padding: 15px 40px; /* Spacing */
+      border-radius: 0 0 30px 30px; /* Rounded bottom corners */
+      text-align: right; /* Align nav items right */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Drop shadow */
+      z-index: 1000; /* Above other elements */
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; /* Remove bullets */
+      display: inline-flex; /* Horizontal layout */
+      gap: 15px; /* Space between items */
+    }
+    nav a {
+      color: #f3e9d2; /* Light text */
+      text-decoration: none; /* No underline */
+      border: 2px solid #2b3a42; /* Border */
+      background-color: #2b3a42; /* Dark background */
+      padding: 10px 20px; /* Button padding */
+      border-radius: 30px; /* Rounded buttons */
+      font-weight: 600; /* Bold text */
+      transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #7A3B2E; /* Brown text on hover */
+      background-color: #f3e9d2; /* Light background on hover */
+    }
+
+    /* Main content area styling */
+    main {
+      padding: 120px 20px 80px; /* Top padding for navbar, bottom for footer */
+      min-height: 100vh; /* At least full viewport height */
+      display: flex; /* Flexbox for centering */
+      justify-content: center; /* Center horizontally */
+      align-items: flex-start; /* Align to top */
+    }
+
+    /* Contact form styling */
+    .form {
+      max-width: 420px; /* Max width */
+      width: 100%; /* Responsive */
+      padding: 20px; /* Inner spacing */
+      background-color: #F3E9D2; /* Light background */
+      border-radius: 20px; /* Rounded corners */
+      display: flex; /* Flexbox layout */
+      flex-direction: column; /* Stack vertically */
+      gap: 18px; /* Space between fields */
+      box-shadow: 0 0 15px rgba(122, 59, 46, 0.3); /* Subtle shadow */
+    }
+    .title {
+      font-size: 24px; /* Large title */
+      color: #7A3B2E; /* Brown color */
+      margin: 0 0 5px 0; /* Space below */
+      text-align: center; /* Centered */
+      font-weight: 700; /* Bold */
+    }
+    .message {
+      font-size: 16px; /* Message text size */
+      color: #7A3B2E; /* Brown color */
+      text-align: center; /* Centered */
+      margin: 0 0 20px 0; /* Space below */
+    }
+    .flex {
+      display: flex; /* Horizontal layout for name fields */
+      gap: 16px; /* Space between fields */
+      width: 100%;
+    }
+    label {
+      position: relative; /* For floating label effect */
+      flex: 1 1 0; /* Flex grow/shrink */
+      min-width: 0;
+      padding-bottom: 28px; /* Space for floating label */
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: #2B3A42; /* Dark text */
+    }
+    .input {
+      padding: 10px; /* Input padding */
+      border-radius: 10px; /* Rounded corners */
+      border: 1px solid rgba(105, 105, 105, 0.397); /* Subtle border */
+      font-size: 14px;
+      outline: none; /* Remove default outline */
+      width: 100%;
+      background: ; /* No background specified */
+      color: #2B3A42; /* Input text color */
+      box-sizing: border-box;
+      resize: vertical; /* Allow textarea resize vertically */
+    }
+    /* Floating label styling */
+    .input + span {
+      position: absolute;
+      left: 12px;
+      top: 18px;
+      font-size: 0.9em;
+      color: grey;
+      cursor: text;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+    /* Move label up when input is focused or not empty */
+    .input:focus + span,
+    .input:not(:placeholder-shown) + span {
+      top: 5px;
+      font-size: 0.7em;
+      font-weight: 600;
+      color: #7A3B2E;
+    }
+
+    /* Submit button styling */
+    .submit {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background-color: #7A3B2E; /* Brown background */
+      color: #F3E9D2; /* Light text */
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      box-shadow: none !important;
+      filter: none !important;
+    }
+    .submit:hover,
+    .submit:focus,
+    .submit:active {
+      background-color: #5e2a20; /* Darker on hover */
+      outline: none;
+      box-shadow: none !important;
+      filter: none !important;
+    }
+    /* Footer styling */
+    footer {
+      background-color: #7A3B2E; /* Brown background */
+      padding: 20px;
+      border-top: 2px solid black;
+      border-radius: 30px 30px 0 0; /* Rounded top corners */
+      text-align: center;
+      color: #f3e9d2; /* Light text */
+      position: relative;
+      z-index: 100;
+      margin-top: 40px;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    footer a {
+      color: #f3e9d2; /* Light text */
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+      border: 2px solid #2b3a42;
+      background-color: #2b3a42;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+    footer a:hover,
+    footer a:focus {
+      color: #7A3B2E; /* Brown text on hover */
+      background-color: #f3e9d2; /* Light background on hover */
+    }
+  </style>
+
+<body>
+  <!-- Background slideshow element -->
+  <div class="slideshow-bg"></div>
+
+  <!-- Navigation bar with links to other pages -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="flavours.html">Flavours</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content area containing the contact form -->
+  <main>
+    <form class="form" novalidate> <!-- 'novalidate' disables default HTML5 validation -->
+      <p class="title">Contact Us</p> <!-- Form title -->
+      <p class="message">Fill the form below and we will get back to you shortly.</p> <!-- Form instructions -->
+
+      <!-- First and Last Name fields side by side -->
+      <div class="flex">
+        <label>
+          <input required placeholder=" " type="text" class="input" /> <!-- First Name input -->
+          <span>First Name</span> <!-- Floating label -->
+        </label>
+        <label>
+          <input required placeholder=" " type="text" class="input" /> <!-- Last Name input -->
+          <span>Last Name</span> <!-- Floating label -->
+        </label>
+      </div>
+
+      <!-- Email field -->
+      <label>
+        <input required placeholder=" " type="email" class="input" /> <!-- Email input -->
+        <span>Email</span> <!-- Floating label -->
+      </label>
+
+      <!-- Phone number field with pattern for validation -->
+      <label>
+        <input required placeholder=" " type="tel" class="input" pattern="[0-9\s\-\+\(\)]{7,}" /> <!-- Phone input -->
+        <span>Phone Number</span> <!-- Floating label -->
+      </label>
+
+      <!-- Message textarea -->
+      <label>
+        <textarea required placeholder=" " class="input" rows="4"></textarea> <!-- Message input -->
+        <span>Message</span> <!-- Floating label -->
+      </label>
+
+      <!-- Submit button -->
+      <button type="submit" class="submit">Submit</button>
+    </form>
+  </main>
+
+  <!-- Footer with copyright and social media links -->
+  <footer>
+    <p>© 2025 Tamaiya. All rights reserved.</p>
+    <p>
+      Contact us at:
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    // Array of image paths for the background slideshow
+    const images = [
+      "images/bg1.jpg",
+      "images/bg2.jpg",
+      "images/bg3.jpg",
+      "images/bg4.jpg",
+    ];
+
+    let index = 0; // Current image index
+    const bgDiv = document.querySelector(".slideshow-bg"); // Get the slideshow background div
+
+    // Function to change the background image
+    function changeBackground() {
+      bgDiv.style.backgroundImage = `url('${images[index]}')`; // Set background image
+      index = (index + 1) % images.length; // Move to next image, loop back to start
+    }
+
+    changeBackground(); // Set initial background
+    setInterval(changeBackground, 5000); // Change background every 5 seconds
+  </script>
+</body>
+</html>

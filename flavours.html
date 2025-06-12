@@ -1,0 +1,256 @@
+<!DOCTYPE html> <!-- Declares the document type and version of HTML -->
+<html lang="en"> <!-- Sets the language of the document to English -->
+<head>
+  <meta charset="UTF-8"> <!-- Sets the character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
+  <link rel="stylesheet" href="external.css"> <!-- Links to an external CSS file -->
+  <title>Document</title> <!-- Sets the title of the page -->
+  <style>
+    /* Set the background image for the body, make it cover the whole screen and fixed */
+    body {
+      background: url('images/bg1.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    /* Basic body styling: font, margin, padding, flex layout for vertical stacking */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styling: center text, padding, background and text color */
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #2b3a42;
+      color: #f3e9d2;
+    }
+
+    /* Container for all flavor cards: flex layout, wrapping, spacing, padding */
+    .flavors-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    /* Individual flavor card styling: background, border, padding, shadow, transition, etc. */
+    .flavor-card {
+      background-color: #2b3a42;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      min-width: 200px;
+      flex: 1 1 200px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      color: #f3e9d2;
+    }
+
+    /* Hover effect for flavor cards: change background, text color, shadow, and move up slightly */
+    .flavor-card:hover {
+      background-color: #f3e9d2;
+      color: #2b3a42;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Popup overlay: covers the whole screen, centers content, hidden by default */
+    .flavor-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Popup box styling: background, padding, rounded corners, shadow, scaling for animation */
+    .flavor-popup {
+      background-color: #2b3a42;
+      padding: 25px;
+      border-radius: 10px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+
+    /* Show popup overlay and scale popup when hovering over the card */
+    .flavor-card:hover .flavor-popup-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .flavor-card:hover .flavor-popup {
+      transform: scale(1);
+    }
+
+    /* Popup title styling */
+    .popup-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #f3e9d2;
+    }
+
+    /* Popup content styling */
+    .popup-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #f3e9d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow-bg"> <!-- Container for slideshow background and all content -->
+    <!-- Navigation bar with links to other pages -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="contact-us.html">Contact Us</a>
+      <a href="flavours.html">Flavours</a>
+    </nav>
+    <!-- Header section with main title -->
+    <div class="header">
+      <h1>OUR TOP FIVE BEST SELLERS</h1>
+    </div>
+    <!-- Container for all flavor cards -->
+    <div class="flavors-container">
+      <!-- Flavor Card 1: Chilly flake -->
+      <div class="flavor-card">
+        <h2>Chilly flake</h2>
+        <!-- Image for the flavor -->
+        <img src="IMG_4668.jpeg" alt="spicy" style="width:100%; border-radius: 8px;">
+        <!-- Popup overlay with details, shown on hover -->
+        <div class="flavor-popup-overlay">
+          <div class="flavor-popup">
+            <div class="popup-title"> Details</div>
+            <div class="popup-content">
+              it has a hint of spice that makes it a favorite among those who enjoy a little kick in their snacks.
+              <br><br>
+              <strong>Ingredients:Sticky Rice soy sauce chilly flake</strong>
+              <br>
+              <strong>price:570 YEN/100g</strong> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flavor Card 2: Butter -->
+      <div class="flavor-card">
+        <h2>Butter</h2>
+        <img src="IMG_4681.jpeg" alt="butter" style="width:100%; border-radius: 8px;">
+        <div class="flavor-popup-overlay">
+          <div class="flavor-popup">
+            <div class="popup-title"> Details</div>
+            <div class="popup-content">
+              it is a rice cracker that is coated in salt and butter, giving it a savory and buttery flavor that is loved by many.
+              <br><br>
+              <strong>Ingredients:Sticky Rice soy sauce butter</strong>
+              <br>
+              <strong>price:540 YEN/100g</strong>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <!-- Flavor Card 3: seaweed -->
+      <div class="flavor-card">
+        <h2>seaweed</h2>
+        <img src="IMG_4666.jpeg" alt="seaweed wrapped rice cracker" style="width:100%; border-radius: 8px;">
+        <div class="flavor-popup-overlay">
+          <div class="flavor-popup">
+            <div class="popup-title"> Details</div>
+            <div class="popup-content">
+              it is a rice cracker that is wrapped in seaweed, giving it a unique and savory flavor that is loved by many.
+              <br><br>
+              <strong>Ingredients:Sticky Rice soy sauce seaweed</strong>
+              <br>
+              <strong>price:772 YEN/100g</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flavor Card 4: Variaty -->
+      <div class="flavor-card">
+        <h2>Variaty</h2>
+        <img src="IMG_4685.jpeg" alt="variety" style="width:100%; border-radius: 8px;">
+        <div class="flavor-popup-overlay">
+          <div class="flavor-popup">
+            <div class="popup-title"> Details</div>
+            <div class="popup-content">
+              it is a mix of multiple flavors of rice crackers, giving it a unique and savory flavor that is loved by many locals and new comers
+              <br><br>
+              <strong>Ingredients:sticky rice soy sauce matcha salt</strong> 
+              <br>
+              <strong>price:540 YEN/100g</strong> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flavor Card 5: Big seaweed -->
+      <div class="flavor-card">
+        <h2>Big seaweed</h2>
+        <img src="IMG_4695.jpeg" alt="big seaweed" style="width:100%;  border-radius: 8px;">
+        <div class="flavor-popup-overlay">
+          <div class="flavor-popup">
+            <div class="popup-title"> Details</div>
+            <div class="popup-content">
+              it is a circular rice cracker that is wrapped in seaweed, giving it a unique and savory flavor that is loved by many.
+              <br><br>
+              <strong>Ingredients:sticky rice soy sauce matcha giving it a very savory flavour like the other seaweed cracker but is bigger loved by many locals.</strong> 
+              <br>
+              <strong>price:540 YEN/100g</strong> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer section with copyright and social media links -->
+    <footer>
+      <p>© 2025 Tamaiya. All rights reserved.</p>
+      <p>
+        Contact us at:
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </footer>
+  </div>
+  <script>
+    // Array of background image URLs for the slideshow
+    const images = [
+      "images/bg1.jpg",
+      "images/bg2.jpg",
+      "images/bg3.jpg",
+      "images/bg4.jpg"
+    ];
+
+    let index = 0; // Current image index
+    const bgDiv = document.querySelector(".slideshow-bg"); // Get the slideshow background container
+
+    // Function to change the background image
+    function changeBackground() {
+      bgDiv.style.backgroundImage = `url('${images[index]}')`; // Set background image
+      index = (index + 1) % images.length; // Move to next image, loop back to start
+    }
+
+    changeBackground(); // Show the first image immediately
+    setInterval(changeBackground, 5000); // Change background every 5 seconds
+  </script>
+</body>
+</html>
